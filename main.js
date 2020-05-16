@@ -2,29 +2,38 @@
 
 
   
-  document.querySelector('button').addEventListener('click',()=>{
+  document.getElementById('button').addEventListener('click',()=>{
     const fizz = document.getElementById('fizz');
     const buzz = document.getElementById('buzz');
-    console.log(fizz.value);
-    console.log(buzz.value);
-    // console.log(Number.isInteger(1));
-    // console.log(Number.isInteger(1.0));
-    // console.log(Number.isInteger(Number(fizz.value)));
-    // console.log(Number.isInteger(Number(buzz.value)));
-    
+    let div = document.getElementById('output-area');
+    // if(p !== null){
+    //   p.remove();
+    // }
+
+    div.textContent = "";
+
     if(Number.isInteger(Number(fizz.value)) === false || Number.isInteger(Number(buzz.value)) === false || fizz.value ==='' || buzz.value === ''){
-      document.body.innerHTML += '整数値を入力してください';
+      const p = document.createElement('p');
+      p.textContent = '整数値を入力してください';
+      div.appendChild(p);
+
     }else{
-        for(let i=1; i<100; i++){
-          if(i%fizz.value === 0 && i%buzz.value === 0){
-            document.body.innerHTML += `FizzBuzz${i}<br>`;
-          }else if(i%fizz.value === 0){
-            document.body.innerHTML += `Fizz${i}<br>`;
-          }else if(i%buzz.value === 0){
-            document.body.innerHTML += `Buzz${i}<br>`;
-          }
+      for(let i=1; i<100; i++){
+        if(i%fizz.value === 0 && i%buzz.value === 0){
+          const p = document.createElement('p');
+          p.textContent = `FizzBuzz${i}`;
+          div.appendChild(p);
+        }else if(i%fizz.value === 0){
+          const p = document.createElement('p');
+          p.textContent = `Fizz${i}`;
+          div.appendChild(p);
+        }else if(i%buzz.value === 0){
+          const p = document.createElement('p');
+          p.textContent = `Buzz${i}`;
+          div.appendChild(p);
         }
       }
+    }
   });
 
   // if(isNaN(fizz.value) || isNaN(buzz.value))
